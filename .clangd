@@ -1,2 +1,2 @@
 CompileFlags:
-  Compiler: clang
+  Compiler: clang++

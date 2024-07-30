@@ -8,6 +8,9 @@ IndentWidth: 4
 UseTab: Never
 ColumnLimit: 80
 
+Language: Cpp
+Standard: Auto
+
 # Выравниевание
 AlignConsecutiveAssignments:
   Enabled: true
@@ -39,4 +42,5 @@ AlignTrailingComments:
 BinPackArguments: false
 BinPackParameters: false
 
+BreakConstructorInitializers: BeforeComma
 BreakInheritanceList: BeforeComma
