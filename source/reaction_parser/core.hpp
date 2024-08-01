@@ -31,7 +31,7 @@ class ReactionParser final {
 class ReactionParserError final : public std::exception {
    public:
     explicit ReactionParserError(const std::string& reaction_str,
-                        const std::string& optional_msg = "");
+                                 const std::string& optional_msg = "");
 
     [[nodiscard]] auto what() const noexcept -> const char* override;
 
