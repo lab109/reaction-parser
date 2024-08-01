@@ -23,8 +23,8 @@ class ReactionParser final {
         -> ParseResultType;
 
    private:
-    static const inline std::regex        species_expression_{""};
-    const std::string                     eq_symbol_;
+    static const inline std::regex species_expression_{R"(\d?[A-Z](\S?)+)"};
+    const std::string              eq_symbol_;
     const std::unordered_set<std::string> species_names_;
 };
 

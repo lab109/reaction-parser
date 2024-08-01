@@ -6,28 +6,31 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_EXPORT_COMPILE_COMMANDS)
 endif()
 
-
 # =============================================
 
 # Настройки проекта
-
 project(reaction_parser LANGUAGES CXX)
 
-
 add_library(reaction_parser STATIC)
+add_library(lab109::reaction_parser ALIAS reaction_parser)
 
 # Подключение директории с исходным кодом
 target_include_directories(
     reaction_parser PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
-                        $<INSTALL_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
+    $<INSTALL_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
 )
 
 set_target_properties(
     reaction_parser
     PROPERTIES CXX_STANDARD 20
-               CXX_STANDARD_REQUIRED on
-               CXX_EXTENSIONS off
-)
+    CXX_STANDARD_REQUIRED on
+    CXX_EXTENSIONS off)
+
 # =============================================
 # Добавление поддиректорий и сторонних библиотек
 add_subdirectory(source)
+
+# =============================================
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    add_subdirectory(examples)
+endif()
