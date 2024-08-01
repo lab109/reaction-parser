@@ -1,2 +1,3 @@
 
-# Работа с исходным кодом
+
+add_subdirectory(reaction_parser)
