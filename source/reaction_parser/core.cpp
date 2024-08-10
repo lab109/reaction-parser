@@ -7,15 +7,15 @@
 
 namespace {
 
-auto FindStoichCoefficient(const std::string& raw_species_name) noexcept
+auto FindStoichiometricCoefficient(const std::string& raw_species_name) noexcept
     -> std::pair<std::string, int> {
-    if (!std::isdigit(static_cast<unsigned char>(raw_species_name[0]))) {
+    if (std::isdigit(static_cast<unsigned char>(raw_species_name[0])) == 0) {
         return {raw_species_name, 1};
     }
 
-    const auto stoichometric_coefficient{
+    const auto stoichiometric_coefficient{
         std::stoi(raw_species_name.substr(0, 1))};
-    return {raw_species_name.substr(1), stoichometric_coefficient};
+    return {raw_species_name.substr(1), stoichiometric_coefficient};
 }
 
 struct ReactionToSplit final {
@@ -85,7 +85,8 @@ auto lab109::ReactionParser::ParseReaction(
     }
 
     for (const auto& raw_species_name : lhs_raw_species_names) {
-        auto [s_name, s_coefficient] = FindStoichCoefficient(raw_species_name);
+        auto [s_name, s_coefficient] =
+            FindStoichiometricCoefficient(raw_species_name);
 
         if (species_names_.find(s_name) != species_names_.end()) {
             parse_result.at(s_name).first += s_coefficient;
@@ -99,7 +100,8 @@ auto lab109::ReactionParser::ParseReaction(
     }
 
     for (const auto& raw_species_name : rhs_raw_species_names) {
-        auto [s_name, s_coefficient] = FindStoichCoefficient(raw_species_name);
+        auto [s_name, s_coefficient] =
+            FindStoichiometricCoefficient(raw_species_name);
 
         if (species_names_.find(s_name) != species_names_.end()) {
             parse_result.at(s_name).second += s_coefficient;

@@ -35,7 +35,7 @@ class ReactionParser final {
      * @brief Конструктор парсера химических реакций
      *
      * @param species_names имена компонентов смеси
-     * @param eq_symbol символ химичесого уравнения
+     * @param eq_symbol символ химического уравнения
      */
     ReactionParser(const std::initializer_list<std::string>& species_names,
                    std::string&&                             eq_symbol);
@@ -53,18 +53,18 @@ class ReactionParser final {
      * @param reaction_str исходная строка реакции
      * @return ParseResultType
      */
-    auto ParseReaction(const std::string& reaction_str) const
+    [[nodiscard]] auto ParseReaction(const std::string& reaction_str) const
         -> ParseResultType;
 
    private:
-    static const inline std::regex species_expression_{R"(\d?[A-Z](\S?)+)"};
-    const std::string              eq_symbol_;
-    const std::unordered_set<std::string> species_names_;
+    static const inline std::regex  species_expression_{R"(\d?[A-Z](\S?)+)"};
+    std::string                     eq_symbol_;
+    std::unordered_set<std::string> species_names_;
 };
 
 /**
  * @brief Тип исключения, выбрасываемого при ошибке парсинга реакции
- * 
+ *
  */
 class ReactionParserError final : public std::exception {
    public:
@@ -73,8 +73,8 @@ class ReactionParserError final : public std::exception {
 
     /**
      * @brief Вывести сообщение об ошибке
-     * 
-     * @return const char* 
+     *
+     * @return const char*
      */
     [[nodiscard]] auto what() const noexcept -> const char* override;
 

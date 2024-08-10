@@ -4,6 +4,9 @@ misc-*,\
 modernize-*,\
 performance-*,\
 portability-*,\
+readability-*,\
+clang-analyzer-*,\
+cppcoreguidelines-*,\
 "
 CheckOptions:
   - key:   modernize-use-default-member-init.UseAssignment
@@ -11,4 +14,4 @@ CheckOptions:
   - key:   modernize-use-equals-default.IgnoreMacros
     value: '0'
   - key:   modernize-use-auto.MinTypeNameLength
-    value: '80'
+    value: '100'
