@@ -47,6 +47,8 @@ class ReactionParser final {
      */
     ReactionParser(const std::initializer_list<std::string>& species_names);
 
+    explicit ReactionParser(const std::unordered_set<std::string>& species_names);
+
     /**
      * @brief Парсинг реакции
      *
