@@ -63,7 +63,7 @@ lab109::ReactionParser::ReactionParser(
 
 lab109::ReactionParser::ReactionParser(
     const std::unordered_set<std::string>& species_names)
-    : species_names_{species_names} {}
+    : species_names_{species_names}, eq_symbol_{"<=>"} {}
 
 auto lab109::ReactionParser::ParseReaction(
     const std::string& reaction_str) const -> ParseResultType {
